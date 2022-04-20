@@ -3,34 +3,30 @@ const mongoose = require('mongoose');
 const PORT = 3000;
 const app = express();
 const path = require('path');
-const indexRouter = require('./routes/index');
-const booksRouter = require('./routes/books');
 const studentsRouter = require('./routes/students');
 
 mongoose.connect('mongodb://localhost/samples');
-
-// mongoose.connect(
-//   'mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.3.1'
-// );
-
-// middleware
-app.use(express.json());
-app.use((req, res, next) => {
-  res.locals.message = 'Hello, World!';
-  next();
-});
 
 // setup view engine
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+app.use(express.urlencoded({ extended: false }));
+
 // routing middlewares
-app.use('/', indexRouter);
-app.use('/books', booksRouter);
+// app.use('/', indexRouter);
+// app.use('/books', booksRouter);
+// app.use('/students', studentsRouter);
+
+app.get('/', (req, res) => {
+  res.render('index.ejs');
+});
+
 app.use('/students', studentsRouter);
 
 // error handler middleware
 app.use((req, res, next) => {
+  res.status(404);
   res.send('Page not found');
 });
 

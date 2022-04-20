@@ -2,18 +2,15 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/new', (req, res) => {
-  res.send('Students form');
+  res.render('studentsForm');
 });
 
 router.post('/', (req, res) => {
-  // grab the data
-  // save the data to database
-  // send a response
+  res.send(req.body);
 });
 
 router.get('/', (req, res) => {
-  const sports = ['ankit', 'suraj', 'prashant', 'ravi'];
-  res.render('students', { sports: sports });
+  res.render('students', { list: ['ankit', 'suraj', 'prashant', 'ravi'] });
 });
 
 router.get('/:id', (req, res) => {

@@ -11,8 +11,8 @@ router.get('/new', (req, res) => {
   res.render('userForm.ejs');
 });
 
-router.post('/', (req, res) => {
-  // capture the form data
+router.post('/new', (req, res) => {
+  res.send(req.body);
 });
 
 router.get('/:id', (req, res) => {

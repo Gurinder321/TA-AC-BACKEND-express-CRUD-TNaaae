@@ -9,7 +9,7 @@ const PORT = 3000;
 
 // connect to db
 mongoose.connect(
-  'mongodb://localhost/bookstore',
+  'mongodb://localhost/users',
   { useNewUrlParser: true, useUnifiedTopology: true },
   (err) => {
     console.log('Connected', err ? false : true);
@@ -26,6 +26,8 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use(express.urlencoded({ extended: false }));
+
 // routing middlewares
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -33,6 +35,11 @@ app.use('/users', usersRouter);
 // setup view engine
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+
+// routes
+app.get('/', (req, res) => {
+  res.render('index.ejs');
+});
 
 // error handler middleware
 // 404

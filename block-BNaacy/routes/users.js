@@ -1,25 +1,39 @@
 const express = require('express');
 const router = express.Router();
-const Book = require('../models/user');
 
 router.get('/', (req, res) => {
-  res.render('users');
+  // handle action
+  res.render('users.ejs');
 });
 
 router.get('/new', (req, res) => {
-  res.render('addUser');
+  //  render the create form
+  res.render('userForm.ejs');
 });
 
 router.post('/', (req, res) => {
-  // capture data
-  //   console.log(req.body);
-  // save it to the database
-  User.create(req.body, (err, createdUser) => {
-    // console.log(err, createdBook);
-    if (err) return next(err);
-    res.redirect('/user');
+  // capture form data
+  User.create(req.body, (err, user) => {
+    if (err) return res.redirect('/users/new');
+    res.redirect('/');
   });
-  //   response
+});
+
+router.get('/:id', (req, res) => {
+  // send single user details
+  res.render('singleUser.ejs');
+});
+
+router.get('/:id/edit', (req, res) => {
+  // edit form
+});
+
+router.put('/:id', (req, res) => {
+  // capture the data from the update form
+});
+
+router.delete('/:id', (req, res) => {
+  // delete the user
 });
 
 module.exports = router;

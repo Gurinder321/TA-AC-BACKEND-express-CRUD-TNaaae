@@ -31,7 +31,7 @@ router.get('/:id', (req, res, next) => {
   User.findById(id, (err, user) => {
     console.log(user);
     if (err) return next(err);
-    res.render('userDetails', { user: user });
+    res.render('userDetails.ejs', { user });
   });
 });
 

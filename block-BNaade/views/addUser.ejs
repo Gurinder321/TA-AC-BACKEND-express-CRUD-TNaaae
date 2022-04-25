@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <nav>
+      <a href="/">Users</a>
+      <a href="/users">Back</a>
+    </nav>
+    <div>
+      <form action="/users" method="POST">
+        <h2>Add User</h2>
+        <input type="text" name="name" placeholder="Add Name" />
+        <input type="text" name="title" placeholder="Add Title" />
+        <textarea
+          name="description"
+          id=""
+          cols="30"
+          rows="4"
+          placeholder="Add Description"
+        ></textarea>
+
+        <input type="number" name="amount" placeholder="Enter amount" />
+        <button type="submit">Add User</button>
+      </form>
+    </div>
+  </body>
+</html>

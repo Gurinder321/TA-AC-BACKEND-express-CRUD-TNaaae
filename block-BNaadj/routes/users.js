@@ -5,6 +5,7 @@ const User = require('../models/user');
 router.get('/', (req, res) => {
   // fetch list of books from database
   User.find({}, (err, users) => {
+    console.log(err, users);
     if (err) return next(err);
     res.render('users', { users: users });
   });

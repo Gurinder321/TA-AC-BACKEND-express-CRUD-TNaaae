@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <nav>
+      <a href="/">Users</a>
+      <a href="/users">Back</a>
+    </nav>
+    <div>
+      <form action="/users/<%= user.id %>" method="POST">
+        <h2>Add User</h2>
+
+        <input type="text" name="name" placeholder="Add Name" value="<%= user.name %>" />
+        <input type="email" name="email" placeholder="Add Email" value="<%= user.email %>" />
+        <input type="number" name="age" placeholder="Add Age" value="<%= user.age %>" />
+        <input type="text" name="address" placeholder="Add Address" value="<%= user.address %>" />
+        <input type="text" name="bio" placeholder="Add Bio" />
+        <textarea name="bio" id="" cols="30" rows="4" placeholder="Add Bio">
+ <%= user.bio %></textarea
+        >
+        <input type="text" name="hobbies" placeholder="Add Hobbies" value="<%= user.address %>" />
+
+        <button type="submit">Add User</button>
+      </form>
+    </div>
+  </body>
+</html>
